@@ -1,0 +1,109 @@
+/* ---------------------------------------------------------
+                           Helpers
+   ---------------------------------------------------------*/
+
+/// * Helper class to truncate and add ellipsis to a string too long for it to fit
+/// * on a single line.
+/// * 1. Prevent content from wrapping, forcing it on a single line.
+/// * 2. Add ellipsis at the end of the line.   example: "world..."
+
+%ellipsis {
+  white-space: nowrap; /* 1 */
+  text-overflow: ellipsis; /* 2 */
+  overflow: hidden;
+}
+
+%listreset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+%clearfix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+
+%transition {
+  transition: all 0.3s ease;
+}
+
+%justify {
+  text-align: justify;
+  font-size: 1px;
+  line-height: 0px;
+  > * {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+  }
+  &:after {
+    content: '';
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+#wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  @include media('<tablet') {
+    font-size: 14px;
+  }
+}
+
+//.wrap {
+//  max-width: 1174px;
+//  margin-left: auto;
+//  margin-right: auto;
+//  padding-left: 15px;
+//  padding-right: 15px;
+//}
+//
+//.wrap-flex {
+//  @extend .wrap;
+//
+//  @include media('≥tablet') {
+//    display: flex;
+//    justify-content: space-between;
+//    flex-wrap: wrap;
+//    align-items: center;
+//  }
+//}
+
+
+.hidden-sm {
+  @include media('<tablet') {
+    display: none;
+  }
+}
+
+.visible-sm {
+  @include media('≥tablet') {
+    display: none !important;
+  }
+}
+.visible-lg {
+  @include media('<desktop') {
+    display: none !important;
+  }
+}
+
+.img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}

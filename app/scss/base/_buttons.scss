@@ -1,0 +1,247 @@
+/* ---------------------------------------------------------
+                      Buttons
+   ---------------------------------------------------------*/
+// button DRY
+
+.btn {
+  position: relative;
+  padding: $btn-padding;
+  margin: 0 13px;
+  display: inline-block;
+  border: none;
+  border-radius: $btn-border-radius;
+  outline: none;
+  color: $btn-color;
+  background-color: $btn-background;
+  text-decoration: none;
+  font-size: $btn-font-size;
+  font-family: $btn-font-family;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: top;
+  @extend %transition;
+
+  &:focus,
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: $white;
+    background-color: lighten($btn-background, 5%);
+  }
+
+  &_light {
+    background: transparent;
+    box-shadow: 0 0 0 1px inset;
+    @extend %transition;
+
+    &:focus,
+    &:hover,
+    &:active {
+      background-color: inherit;
+      color: $accent;
+    }
+  }
+}
+
+// WebDesignMaster
+
+//.button {
+//	display: inline-block;
+//	border: none;
+//	color: #fff;
+//	text-decoration: none;
+//	background-color: $accent;
+//	padding: 16px 45px;
+//	font-size: 13px;
+//	text-transform: uppercase;
+//	font-weight: 600;
+//	letter-spacing: 3px;
+//	border-radius: 2px;
+//	text-align: center;
+//	position: relative;
+//	outline: none;
+//	transition: backgroundnd-color .1s ease;
+//
+//	&::after {
+//		transition: background-color .2s ease;
+//		position: absolute;
+//		content: '';
+//		height: 4px;
+//		bottom: 0;
+//		width: 100%;
+//		background-color: darken($accent, 50%);
+//		opacity: .18;
+//		border-bottom-left-radius: 2px;
+//		border-bottom-right-radius: 2px;
+//		left: 0;
+//	}
+//
+//	&:focus, &:hover {
+//	    text-decoration: none;
+//	    color: #fff;
+//	}
+//	&:hover {
+//	    background-color: lighten($accent, 5%);
+//	    &::after {
+//	      opacity: .22;
+//	    }
+//	}
+//	&:active {
+//	    background-color: darken($accent, 5%);
+//	    &::after {
+//		  opacity: .32
+//	    }
+//	}
+//
+//	&.button_white {
+//	    background: $white;
+//	    color: #444;
+//	    &::after {
+//	      background: rgba(#000, .6);
+//	    }
+//
+//	    &:hover,
+//	    &::after {
+//	      background: rgba(#000, .2);
+//	    }
+//
+//	    &:active,
+//	    &::after {
+//	      background: rgba(#000, .4);
+//	    }
+//	}
+//}
+
+// Olyas projects
+
+//.btn{
+//	display: inline-block;
+//	vertical-align: top;
+//	color: $btn-color;
+//	text-transform: uppercase;
+//	min-height: 46px;
+//	font-weight: bold;
+//	font-size: $btn-font-size;
+//	position: relative;
+//	margin: 0 10px 18px;
+//	line-height: 0.94;
+//	padding: 14px 25px 16px;
+//	background: $orange;
+//	position: relative;
+//	&.border{
+//		@include media('>=tablet') {
+//			border: 2px solid rgba(255, 255, 255, .8);
+//		}
+//	}
+//	&.shadow{
+//		&:after{
+//			content:"";
+//			position:absolute;
+//			z-index:-2;
+//			bottom:12px;
+//			right:10px;
+//			width:80%;
+//			height:20%;
+//			max-width:300px;
+//			box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+//			transform:rotate(4deg);
+//		}
+//		&:hover,
+//		&:focus{
+//			color: $white;
+//			&:after{
+//				display: none;
+//			}
+//		}
+//	}
+//
+//	&.tel{
+//		padding-left: 46px;
+//		@include media('>=desktop') {
+//			font-size: 22px;
+//		}
+//		&:before{
+//			@include size(24px, 24px);
+//			content:"";
+//			position: absolute;
+//			background:url('images/sprite.png') no-repeat -68px 0;
+//			left: 15px;
+//			top: 50%;
+//			margin-top: -12px;
+//		}
+//	}
+//	&.small{
+//		padding: 14px 19px 16px;
+//		&.shadow{
+//			&:after{
+//				width: 65%;
+//				transform: rotate(10deg);
+//				right: 8px;
+//			}
+//		}
+//	}
+//	&.btn-default{
+//		color: $light-blue;
+//		position: relative;
+//		padding: 0;
+//		font-size: 14px;
+//		background: none;
+//		padding: 0;
+//		min-height: 0;
+//		&:hover,
+//		&:focus{
+//			opacity: .8;
+//		}
+//		&:after{
+//			content:">";
+//			display: inline-block;
+//			margin: 0 0 0 6px;
+//		}
+//		@include media('>=tablet') {
+//			color: $btn-color;
+//			background: $btn-background;
+//			font-size: 16px;
+//			padding: $btn-padding;
+//			min-height: 50px;
+//		}
+//	}
+//}
+//
+//.btn-booking{
+//	display: none;
+//	@include media('>=tablet') {
+//		display: inline-block;
+//		vertical-align: top;
+//		color: $blue;
+//		font-size: 18px;
+//		font-weight: bold;
+//		position: relative;
+//		text-shadow:-2px 2px 0 rgba(255,255,255,.9), 1px 2px 0 rgba(255,255,255,.9), 0 -2px 0 rgba(255,255,255,.9),-1px 0 0 rgba(255,255,255,.9);
+//		margin: 0 0 13px;
+//	}
+//	@include media('>=desktop') {
+//		margin: 8px 64px 0 0;
+//		&:after{
+//			@include size(45px, 35px);
+//			content:"";
+//			position: absolute;
+//			top: 50%;
+//			left: 108%;
+//			background:url('images/sprite.png') no-repeat;
+//			margin-top: -17px;
+//		}
+//	}
+//}
+//
+//.btn-info{
+//	display: none;
+//	@include media('>=tablet') {
+//		@include hide-text;
+//		@include size(20px, 20px);
+//		vertical-align: middle;
+//		display: inline-block;
+//		background:url('images/sprite.png') no-repeat -233px -72px;
+//	}
+//}

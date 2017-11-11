@@ -1,0 +1,69 @@
+/* ---------------------------------------------------------
+                            Сommon
+   ---------------------------------------------------------*/
+// preloader
+#hellopreloader_preload{
+  display: block;
+  position: fixed;
+  z-index: 99999;
+  top: 0;left: 0;
+  width: 100%;
+  height: 100%;
+  background: #4b4b4b url(http://hello-site.ru//main/images/preloads/circles.svg) center center no-repeat;
+  background-size:41px;
+}
+
+// button to top
+
+.top {
+  position: fixed;
+  bottom: 25px;
+  right: -100px;
+  width: 50px;
+  height: 50px;
+  z-index: 12;
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 50px;
+  text-align: center;
+  background: #e0e0e0;
+  color: #666;
+  border-radius: 50%;
+  opacity: .5;
+  @extend %transition;
+  
+  &:hover {
+    background: $accent;
+    opacity: 1;
+  }
+
+  &.active {
+    right: 25px;
+  }
+}
+
+header, section, footer {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.inverse {
+  background: $dark;
+  color: $white;
+}
+
+.overlay {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba($black, .4);
+  }
+}
+
+

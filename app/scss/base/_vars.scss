@@ -1,0 +1,64 @@
+/* ---------------------------------------------------------
+                           Varibles
+   ---------------------------------------------------------*/
+
+// Common colors
+$black: #000;
+$white: #fff;
+$orange: #ffa500;
+$blue: #007fe3;
+$light-blue: #15b2ff;
+$gray: #464f58;
+
+// Site colors
+$accent: #ED6866;
+$over: #3D3D3D;
+$dark: #434343;
+$light-black: #3a3a3a;
+$light-gray: #898989;
+
+// Fonts
+$base-font-sans-serif: 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+$base-font-serif: 'Times New Roman', 'Times', 'Baskerville', 'Georgia', serif;
+
+// Body
+$base-text-color: $light-gray !default;
+$base-background-color: $white !default;
+$font-size-base: 14px !default;
+$line-height-base: 1.4 !default;                          // 1.6 standart
+$base-font-family: 'trebuchetMS', $base-font-sans-serif !default;
+
+$vertical-rhythm: 0; //($line-height-base * 1em);
+
+$base-min-width: 320px;
+
+// Liks
+$base-link-color: $blue;
+
+// Buttons 
+$btn-color: $white !default;
+$btn-background: $blue !default;
+$btn-padding: 0.4em 0.7em !default;
+$btn-border-radius: 28px;
+$btn-font-size: inherit !default;
+$btn-font-family: 'RobotoRegular' !default;
+
+// Forms
+$form-element-padding: 8px 17px !default;
+$form-element-border-color: #f3f3f3 !default;
+$form-element-focus-border-color: $blue !default;
+$placeholder-color: #898989 !default;
+
+// Headers
+$h1-font-size: 4.28em !default;  // 60px
+$h2-font-size: 3em !default;     // 42px
+$h3-font-size: 2.143em !default; // 30px
+$h4-font-size: 1.857em !default; // 26px
+$h5-font-size: 1.57em !default;  // 22px
+$h6-font-size: 17px !default;
+
+
+$headings-font-family: 'russo' !default;
+$headings-color: $light-black !default;
+
+$animation-speed: 0.3s;

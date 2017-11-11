@@ -1,0 +1,30 @@
+/* ---------------------------------------------------------
+                           Reset
+   ---------------------------------------------------------*/
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+* {
+  max-height: 1000000px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  opacity: 1;                // for preloader
+  color: $base-text-color;
+  background: $base-background-color;
+  font: #{$font-size-base}/#{$line-height-base} $base-font-family;
+  min-width: $base-min-width;
+  //-webkit-font-smoothing: antialiased;
+  //-moz-osx-font-smoothing: grayscale;
+}

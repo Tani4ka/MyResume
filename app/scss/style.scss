@@ -1,0 +1,75 @@
+/*
+Theme Name: S-Mitler
+Author: Anonymous
+Author URI:
+Version: 1
+Description: S-Mitler
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: base
+Tags: one-column, two-columns
+Theme URI:
+*/
+
+// breakpoints
+$breakpoints: (
+  'xs-phone': 320px,
+  'phone': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'widescreen': 1200px
+);
+
+// keywords
+$media-expressions: (
+  'screen': 'screen',
+  'print': 'print',
+  'handheld': 'handheld',
+  'landscape': '(orientation: landscape)',
+  'portrait': '(orientation: portrait)',
+  'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+  'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
+/* ---------------------------------------------------------
+   1. Libs
+   2. Сustom styles
+   3. General reset
+   4. Site styles
+   ---------------------------------------------------------*/
+
+@import 'vendors/include-media';
+@import 'vendors/normalize';
+
+/* ---------------------------------------------------------
+	1. Libs
+   ---------------------------------------------------------*/
+@import 'base/libs';
+
+/* ---------------------------------------------------------
+	2. Сustom styles
+   ---------------------------------------------------------*/
+@import 'base/vars';
+@import 'base/mixins';
+@import 'base/font-face';
+@import 'base/helpers';
+@import 'base/forms';
+@import 'base/typography';
+@import 'base/buttons';
+@import 'base/flex-grid';
+
+/* ---------------------------------------------------------
+    3. General reset
+   ---------------------------------------------------------*/
+@import 'base/reset';
+@import 'base/cms-reset';
+//@import 'base/wp-reset';
+
+@import 'vendors/animate';
+/* ---------------------------------------------------------
+    4. Site styles
+   ---------------------------------------------------------*/
+@import 'layout/common';
+@import 'layout/header';
+@import 'layout/main';
+@import 'layout/footer';
