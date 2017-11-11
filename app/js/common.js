@@ -40,6 +40,8 @@ function initWOW() {
     new WOW().init();
 }
 
+// other scripts
+
 jQuery(function() {
 
     /* Chrome Smooth Scroll */
@@ -132,15 +134,160 @@ jQuery(function() {
         }
     });
 
+    /* circles */
+    var $outer1 = $("#outer-1");
+    var $outer2 = $("#outer-2");
+    var $outer3 = $("#outer-3");
+    var $outer4 = $("#outer-4");
 
-    /* headings show */
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 800) {
+            $outer1.css({
+                'stroke-dashoffset': '200', 'animation-delay': '0.2s',
+                'animation-name': 'show85', 'stroke': '#ED6866'
+            });
+            $outer2.css({
+                'stroke-dashoffset': '430', 'animation-delay': '0.3s',
+                'animation-name': 'show25', 'stroke': '#ED6866'
+            });
+            $outer3.css({
+                'stroke-dashoffset': '330', 'animation-delay': '0.4s',
+                'animation-name': 'show50', 'stroke': '#ED6866'
+            });
+            $outer4.css({
+                'stroke-dashoffset': '250', 'animation-delay': '0.5s',
+                'animation-name': 'show70', 'stroke': '#ED6866'
+            });
+        }
+    });
+});// other scripts end
 
-    //$('.heading_wrap').fadeIn();
-    //$('.heading_wrap').addClass('fadeInUp');
 
 
-});// Tanya scripts end
+    /* E-mail Ajax Send example */
 
+    ////Documentation & Example: https://github.com/agragregra/uniMail
+    //$(".callback").submit(function() { //Change
+    //    var th = $(this);
+    //    $.ajax({
+    //        //type: "POST",
+    //        //url: "mail.php", //Change
+    //        //data: th.serialize()     // need hostname with imail
+    //
+    //    }).done(function() {
+    //        $('.success').addClass('visible');
+    //        setTimeout(function() {
+    //            th.trigger("reset");
+    //            $('.success').removeClass('visible');
+    //            $.magnificPopup.close();
+    //        }, 3000);
+    //    });
+    //    //}).done(function() {
+    //    //    $(th).find('.success').addClass('active').css('display', 'flex').hide().fadeIn(); // alert("Thank you!");
+    //    //    setTimeout(function() {
+    //    //        $(th).find('.success').removeClass('active').fadeOut();// Done Functions
+    //    //        th.trigger("reset");
+    //    //    }, 3000);
+    //    //});
+    //    return false;
+    //});
+
+    /* Equalheight without plug plugin */
+
+    //(function ($) {
+    //    $.fn.equalHeights = function () {
+    //        var $items = $(this);
+    //        function equalize() {
+    //            $items.height('initial');
+    //            var maxH = $items.eq(0).height();
+    //            $items.each(function () {
+    //                maxH = ($(this).height() > maxH) ? $(this).height() : maxH;
+    //            });
+    //            $items.height(maxH);
+    //        }
+    //        equalize();
+    //        $(window).bind('resize', function () {
+    //            equalize();
+    //        });
+    //    };
+    //})(jQuery);
+    //
+    //// call equalHeights
+    //$('.services__header').equalHeights();
+    //$('.services__text').equalHeights();
+
+
+    /* Blocks the same height */
+
+    //function carouselService() {
+    //    var mh = 23;
+    //    $('.services').each(function () {
+    //        var ths = $(this),
+    //            thsh = ths.find('.services__header').outerHeight();
+    //        //console.log(thsh);
+    //        if(thsh > mh) {
+    //            mh = thsh;
+    //        };
+    //    });
+    //
+    //    $('.services__header').height(mh);
+    //    //console.log($('.services__header').outerHeight());
+    //}carouselService();
+
+
+    /* Add last/first span for cms */
+
+    //$('.carousel-services__composition .carousel-services__header').each(function () {
+    //    var ths = $(this);
+    //    ths.html(ths.html().replace(/(\S+)\s*$/, '<span>$1</span>')); // выделяет последнее слово в span
+    //});
+
+    //$('section .h2').each(function () {
+    //    var ths = $(this);
+    //    ths.html(ths.html().replace(/^(\S+)/, '<span>$1</span>'));  // выделяет первое слово в span
+    //});
+
+    //$('.start .heading__header').each(function () {
+    //    var ths = $(this);
+    //    ths.html(ths.html().replace(/(\w+\'\w+\s+\w+\!)$/, '<span>$1</span>')); // выделяет 2 последнее слово в span
+    //});
+
+    /* Selectize */
+    //$('select').selectize();
+
+
+    /* Resize Window (in the end) */
+
+    //function onResize() {
+    //    $('.carousel-services__content').equalHeights();  // for owl-carousel,
+    //}onResize();
+    //window.onresize = function () {
+    //    onResize()
+    //};
+
+
+    /* Magnific-popup */
+
+    //$('.popup-with-move-anim').magnificPopup({
+    //    type: 'inline',
+    //    fixedContentPos: false,
+    //    fixedBgPos: true,
+    //    overflowY: 'auto',
+    //    closeBtnInside: true,
+    //    preloader: false,
+    //    midClick: true,
+    //    removalDelay: 300,
+    //    mainClass: 'my-mfp-slide-bottom'
+    //});
+
+    /* What form did the application come from (for magnific-popup) */
+
+    //$('a[href="#callback"]').click(function() {      // возьмет из кнопки зачение data-form и вставит в input[type=hidden] value с этим значением, чтобы знать с какой фрмы пришла заявка
+    //    $('#callback .formname').val($(this).data('form'));
+    //});
+
+
+                    /*//////// PLUGINS ////////*/
 
 /* jQuery BG Parallax plugin */
 
@@ -287,340 +434,6 @@ jQuery(function() {
     };
 }(jQuery));
 
-
-
-
-    /* SVG Fallback */
-
-    //if(!Modernizr.svg) {
-    //    $("img[src*='svg']").attr("src", function() {
-    //        return $(this).attr("src").replace(".svg", ".png");
-    //    });
-    //};
-
-    /* picturefill */
-
-   // picturefill({
-   //     reevaluate: true,
-   //     elements: [ document.getElementById("picture-bg") ]
-   // });
-
-
-    /* Retina cover plugin*/
-    //$('.bg-stretch').retinaCover();
-
-
-
-    /* E-mail Ajax Send example */
-
-    ////Documentation & Example: https://github.com/agragregra/uniMail
-    //$(".callback").submit(function() { //Change
-    //    var th = $(this);
-    //    $.ajax({
-    //        //type: "POST",
-    //        //url: "mail.php", //Change
-    //        //data: th.serialize()     // need hostname with imail
-    //
-    //    }).done(function() {
-    //        $('.success').addClass('visible');
-    //        setTimeout(function() {
-    //            th.trigger("reset");
-    //            $('.success').removeClass('visible');
-    //            $.magnificPopup.close();
-    //        }, 3000);
-    //    });
-    //    //}).done(function() {
-    //    //    $(th).find('.success').addClass('active').css('display', 'flex').hide().fadeIn(); // alert("Thank you!");
-    //    //    setTimeout(function() {
-    //    //        $(th).find('.success').removeClass('active').fadeOut();// Done Functions
-    //    //        th.trigger("reset");
-    //    //    }, 3000);
-    //    //});
-    //    return false;
-    //});
-
-    /* Equalheight without plug plugin */
-
-    //(function ($) {
-    //    $.fn.equalHeights = function () {
-    //        var $items = $(this);
-    //        function equalize() {
-    //            $items.height('initial');
-    //            var maxH = $items.eq(0).height();
-    //            $items.each(function () {
-    //                maxH = ($(this).height() > maxH) ? $(this).height() : maxH;
-    //            });
-    //            $items.height(maxH);
-    //        }
-    //        equalize();
-    //        $(window).bind('resize', function () {
-    //            equalize();
-    //        });
-    //    };
-    //})(jQuery);
-    //
-    //// call equalHeights
-    //$('.services__header').equalHeights();
-    //$('.services__text').equalHeights();
-
-
-    /* Fixed sidebar block */
-
-    //$(function(){
-    //    var topPos = $('#floating').offset().top; //расстояние от АйДи флоатинг до начала документа
-    //    $(window).scroll(function() { //при скроллинге:
-    //        var top = $(document).scrollTop(),//скролинг документа
-    //            pip = $('footer').offset().top,//расстояние от футера до начала документа
-    //            height = $('#floating').outerHeight();//высота черного блока
-    //        console.log(topPos)//вывод в консоль любого значения
-    //
-    //        if (top > topPos && top < pip - height) {//проскролено больше расстояния от АйДи флоатинг до начала документа
-    //            //и проскролено меньше чем расстояние от футера минус высота черного блоока
-    //            $('#floating').addClass('fixed').fadeIn(300); //добавляем черному блоку класс фиксед и плавное проявление
-    //        }
-    //        else if (top > pip - height) {$('#floating').fadeOut(100);//скрытие черного блока при достижении футера
-    //        }
-    //        else {$('#floating').removeClass('fixed');}//убираем класс фиксед
-    //    });
-    //});
-
-
-    /* Popup show hide */
-
-    //$(document).ready(function(){
-    //    PopUpHide();
-    //});
-    //function PopUpShow(){
-    //    $("#popup1").show();
-    //}
-    //function PopUpHide(){
-    //    $("#popup1").hide();
-    //}
-
-
-    /* Humburgers */
-
-    //var $humburger = $(".hamburger");
-    //var API = $menu.data( "mmenu" );
-    //
-    //$humburger.on( "click", function() {
-    //    API.open();
-    //});
-    //
-    //API.bind( "open:finish", function() {
-    //    setTimeout(function() {
-    //        $humburger.addClass( "is-active" );
-    //    }, 100);
-    //});
-    //API.bind( "close:finish", function() {
-    //    setTimeout(function() {
-    //        $humburger.removeClass( "is-active" );
-    //    }, 100);
-    //});
-
-
-    /* Owl-carousel (если карусель заружена, сделать блоки одинаковой высоты) */
-
-    //$('.carousel-services').on('initialized.owl.carousel', function () {
-    //    setTimeout(function () {
-    //        carouselService()
-    //    }, 100);
-    //});
-
-    //Owl-carousel
-
-    //$('.carousel-services').owlCarousel({
-    //    loop: true,
-    //    nav: true,
-    //    smartSpeed: 700,
-    //    navText: ['<i class="fa fa-angle-double-left">', '<i class="fa fa-angle-double-right">'],
-    //    responsiveClass: true,
-    //    dots: false,
-    //    responsive: {
-    //        0: {
-    //            items: 1
-    //        },
-    //        800: {
-    //            items: 2
-    //        },
-    //        1100: {
-    //            items: 3
-    //        }
-    //    }
-    //});
-
-
-    /* Blocks the same height for owl-carousel for images */
-
-    //function carouselService() {
-    //    $('.carousel-services__item').each(function () {
-    //        var ths = $(this),
-    //            thsh = ths.find('.carousel-services__content').outerHeight();
-    //        ths.find('.carousel-services__image').css('min-height', thsh);
-    //    });
-    //}carouselService();
-
-
-    /* Blocks the same height */
-
-    //function carouselService() {
-    //    var mh = 23;
-    //    $('.services').each(function () {
-    //        var ths = $(this),
-    //            thsh = ths.find('.services__header').outerHeight();
-    //        //console.log(thsh);
-    //        if(thsh > mh) {
-    //            mh = thsh;
-    //        };
-    //    });
-    //
-    //    $('.services__header').height(mh);
-    //    //console.log($('.services__header').outerHeight());
-    //}carouselService();
-
-
-    /* Add last/first span for cms */
-
-    //$('.carousel-services__composition .carousel-services__header').each(function () {
-    //    var ths = $(this);
-    //    ths.html(ths.html().replace(/(\S+)\s*$/, '<span>$1</span>')); // выделяет последнее слово в span
-    //});
-
-
-    //$('section .h2').each(function () {
-    //    var ths = $(this);
-    //    ths.html(ths.html().replace(/^(\S+)/, '<span>$1</span>'));  // выделяет первое слово в span
-    //});
-
-
-    //$('.start .heading__header').each(function () {
-    //    var ths = $(this);
-    //    ths.html(ths.html().replace(/(\w+\'\w+\s+\w+\!)$/, '<span>$1</span>')); // выделяет 2 последнее слово в span
-    //});
-
-    /* Selectize */
-    //$('select').selectize();
-
-
-    /* Resize Window (in the end) */
-
-    //function onResize() {
-    //    $('.carousel-services__content').equalHeights();  // for owl-carousel,
-    //}onResize();
-    //window.onresize = function () {
-    //    onResize()
-    //};
-
-
-    /* Superfish */
-
-    //$('.top-line .sf-menu').superfish({
-    //    cssArrows: false,
-    //    hoverClass: 'no-class',
-    //    delay: 200
-    //});
-
-
-    /* Owl-carousel */
-
-    //var owl = $('.slider');
-    //owl.owlCarousel({
-    //    loop: true,
-    //    items: 1,
-    //    itemClass: 'slide-wrap',
-    //    nav: true,
-    //    navText:'',  // if we have additional owl-nav, default owl-nav will be empty.
-    //    dots: true,
-    //    smartSpeed: 700
-    //});
-    //
-    //// nav for additional owl-nav
-    //$('.owl-nav__prev').click(function(){
-    //    owl.trigger('prev.owl.carousel');
-    //});
-    //$('.owl-nav__next').click(function(){
-    //    owl.trigger('next.owl.carousel');
-    //});
-
-    //<section class="s-slider">
-    //    <div class="container">
-    //        <div class="owl-nav">
-    //            <div class="owl-nav__prew"><i class="fa fa-angle-left"></i></div>
-    //            <div class="owl-nav__next"><i class="fa fa-angle-right"></i></div>
-    //        </div>
-    //    </div>
-    //    <div class="slider">
-    //        <div class="slide"></div>
-    //        <div class="slide"></div>
-    //        <div class="slide"></div>
-    //    </div>
-    //</section>
-
-
-    /* Mmenu */
-
-    //$(".mobile-mnu").after("<div id='my-menu'>");
-    //$(".sf-menu").clone().appendTo("#my-menu");
-    //$("#my-menu").find("*").attr("style", "");
-    //$("#my-menu").find("ul").removeClass("sf-menu");
-    //$("#my-menu").mmenu({
-    //    extensions: [ 'theme-white', 'pagedim-black', 'fx-menu-slide'],    // 'widescreen' -don"t work
-    //    navbar: {
-    //        title: 'Меню'
-    //    }
-    //});
-
-
-    /* Mmenu */
-
-    //var $menu = $('#my-menu').mmenu({
-    //    extensions: [ 'theme-black', 'effect-menu-slide', 'pagedim-black' ],    // 'widescreen' -don"t work
-    //    navbar: {
-    //        title: '<img src="img/logo.svg" alt="Салон красоты Смитлер">'
-    //    },
-    //    offCanvas: {
-    //        position: 'right'
-    //    }
-    //});
-
-
-    /* Gamburger for menu */
-
-    // https://codepen.io/agragregra/pen/bEbbmZ
-    //$(".mobile-mnu").click(function() {
-    //    var mmApi = $("#my-menu").data( "mmenu" );
-    //    mmApi.open();
-    //    var thiss = $(this).find(".toggle-mnu");
-    //    thiss.addClass("on");
-    //    $(".main-mnu").slideToggle();
-    //    return false;
-    //});
-    //
-    //$(".ishome").click(function() {
-    //    $(".toggle-mnu").removeClass("on");
-    //});
-
-
-    /* Magnific-popup */
-
-    //$('.popup-with-move-anim').magnificPopup({
-    //    type: 'inline',
-    //    fixedContentPos: false,
-    //    fixedBgPos: true,
-    //    overflowY: 'auto',
-    //    closeBtnInside: true,
-    //    preloader: false,
-    //    midClick: true,
-    //    removalDelay: 300,
-    //    mainClass: 'my-mfp-slide-bottom'
-    //});
-
-
-    /* What form did the application come from (for magnific-popup) */
-
-    //$('a[href="#callback"]').click(function() {      // возьмет из кнопки зачение data-form и вставит в input[type=hidden] value с этим значением, чтобы знать с какой фрмы пришла заявка
-    //    $('#callback .formname').val($(this).data('form'));
-    //});
 
 
 /* WOW-master */

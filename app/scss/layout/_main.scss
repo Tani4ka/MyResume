@@ -75,9 +75,112 @@
       opacity: 0;
     }
   }
-
-
 }
+
+
+/*my skills*/
+.skills {
+  position: relative;
+  text-align: center;
+
+  &-overlay {
+    padding: 15px 0;
+    background: rgba(138, 139, 139, 0.4);
+  }
+  .h4, h2 {
+    color: $white;
+  }
+  .bg-holder {
+    padding-top: 70px;
+    height: 490px;
+  }
+}
+
+.percent {
+
+  &_wrap {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  &__circle {
+    width: 140px;
+    height: 141px;
+    border-radius: 50%;
+    border: 11px solid #1a1a1a;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  &__shadow {
+    position: relative;
+    width: 118px;
+    height: 119px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.31);
+  }
+
+  &__lang{
+    color: #feffff;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  &__chart {
+    position: relative;
+    left: 50%;
+    margin-left: -95px;
+    top: -25px;
+  }
+
+  &__svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__outer {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.31);
+    stroke-width: 11;
+    stroke-dasharray: 534;
+    animation-play-state: running;
+    animation-duration: 0.5s;
+    opacity: 1;
+  }
+
+  &__value {
+    position: absolute;
+    top: 50px;
+    left: 45px;
+    margin: 25px 18px;
+    color: #feffff;
+    font-family: 'russo';
+    font-size: 30px;
+  }
+}
+
+@keyframes show85 {
+  from {  stroke-dashoffset: 537;  }
+  to {  stroke-dashoffset: 200;  }
+}
+
+@keyframes show25 {
+  from {  stroke-dashoffset: 537;  }
+  to {  stroke-dashoffset: 430;  }
+}
+
+@keyframes show50 {
+  from {  stroke-dashoffset: 537;  }
+  to {  stroke-dashoffset: 330;  }
+}
+
+@keyframes show70 {
+  from {  stroke-dashoffset: 537;  }
+  to {  stroke-dashoffset: 250;  }
+}
+
 
 
 
