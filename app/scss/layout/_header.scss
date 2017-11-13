@@ -4,9 +4,8 @@
 
 /* for paralax images */
 .bg-holder {
-  padding-top: 50px;
+  padding: 50px 0 150px;
   width: 100%;
-  height: 580px;
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
@@ -23,7 +22,6 @@
 .header {
   position: relative;
   color: $accent;
-  text-align: center;
 
   &-overlay {
     padding-bottom: 30px;
@@ -32,8 +30,10 @@
 
   &__logo {
     display: block;
+    color: $accent;
     font-size: 5.71em;
     font-family: sarina;
+    text-decoration: none;
   }
 
   &__heading {
@@ -41,13 +41,27 @@
     font-family: russo;
     font-weight: normal;
     color: $white;
+
+    @include media("<tablet") {
+      font-size: 3.1em;
+      margin-bottom: 10px;
+    }
+  }
+  .h3 {
+    @include media("<tablet") {
+      font-size: 2em;
+    }
   }
 }
 
 .soc {
-  text-align: center;
   padding: 0;
   margin: 40px 0 0;
+  font-size: 0;
+
+  @include media("<tablet") {
+    margin: 20px 0 0;
+  }
 
   &__item {
     list-style: none;
@@ -55,6 +69,11 @@
     border-radius: 50%;
     box-shadow: 0 0 0 2px transparent;
     margin: 0 3px;
+    font-size: 14px;
+
+    @include media("<tablet") {
+      margin: 0 1.5px;
+    }
   }
 
   &__link {
@@ -68,7 +87,6 @@
     background: transparent;
     font-size: 1.286em;
     line-height: 39px;
-    text-align: center;
     text-decoration: none;
     transition: 0.5s;
 
@@ -123,7 +141,8 @@
   color: $white;
 
   @include media("<tablet") {
-      left: 15px;
+    left: 15px;
+    //top: 0;
   }
   @media screen and (min-width: 1600px) {
     left: 20%;
@@ -133,6 +152,7 @@
     overflow: hidden;
     width: 62px;
     background: transparent;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.15);
   }
   &-btn{
     background: $accent;
@@ -259,6 +279,7 @@
     color: $white;
     text-decoration: none;
     padding: 15px 60px 15px 25px;
+    @extend %transition;
 
     &:hover{
       color: $accent;

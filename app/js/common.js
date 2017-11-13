@@ -134,32 +134,43 @@ jQuery(function() {
         }
     });
 
-    /* circles */
-    var $outer1 = $("#outer-1");
-    var $outer2 = $("#outer-2");
-    var $outer3 = $("#outer-3");
-    var $outer4 = $("#outer-4");
+
+    /* circles animation */
+    var outer1 = $("#outer-1");
+    var outer2 = $("#outer-2");
+    var outer3 = $("#outer-3");
+    var outer4 = $("#outer-4");
+    var wrap = $(".percent_wrap");
+    var wrapOffsetTop = wrap.offset().top;
+    var windowHeight = $(window).height();
 
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 800) {
-            $outer1.css({
-                'stroke-dashoffset': '200', 'animation-delay': '0.2s',
-                'animation-name': 'show85', 'stroke': '#ED6866'
+        if ( $(this).scrollTop() > wrapOffsetTop - windowHeight ) {
+            outer1.css({
+                'animation-delay': '0.2s', 'animation-name': 'show85', 'animation-fill-mode': 'forwards'
             });
-            $outer2.css({
-                'stroke-dashoffset': '430', 'animation-delay': '0.3s',
-                'animation-name': 'show25', 'stroke': '#ED6866'
+            outer2.css({
+                'animation-delay': '0.4s', 'animation-name': 'show25', 'animation-fill-mode': 'forwards'
             });
-            $outer3.css({
-                'stroke-dashoffset': '330', 'animation-delay': '0.4s',
-                'animation-name': 'show50', 'stroke': '#ED6866'
+            outer3.css({
+                'animation-delay': '0.6s', 'animation-name': 'show50', 'animation-fill-mode': 'forwards'
             });
-            $outer4.css({
-                'stroke-dashoffset': '250', 'animation-delay': '0.5s',
-                'animation-name': 'show70', 'stroke': '#ED6866'
+            outer4.css({
+                'animation-delay': '0.8s', 'animation-name': 'show70', 'animation-fill-mode': 'forwards'
             });
         }
     });
+
+    /* Add two last words in span */
+
+    $('.skills .heading_wrap .h2').each(function(){
+        var $this = $(this), text=$this.text().trim(), words = text.split(/\s+/);
+        var lastWords = words.splice(-2);
+        var join = lastWords.join(' ');
+        words.push('<span class="h2_orange">' + join + '</span>');
+        $this.html(words.join(' '));
+    });
+
 });// other scripts end
 
 
@@ -249,7 +260,7 @@ jQuery(function() {
 
     //$('.start .heading__header').each(function () {
     //    var ths = $(this);
-    //    ths.html(ths.html().replace(/(\w+\'\w+\s+\w+\!)$/, '<span>$1</span>')); // выделяет 2 последнее слово в span
+    //    ths.html(ths.html().replace(/(\w+\'\w+\s+\w+\!)$/, '<span>$1</span>')); // выделяет 2последних словa в span
     //});
 
     /* Selectize */

@@ -25,6 +25,7 @@ body {
   background: $base-background-color;
   font: #{$font-size-base}/#{$line-height-base} $base-font-family;
   min-width: $base-min-width;
+  text-align: center;
   //-webkit-font-smoothing: antialiased;
   //-moz-osx-font-smoothing: grayscale;
 }

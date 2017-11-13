@@ -31,7 +31,8 @@ gulp.task('js', ['common-js'], function() {
 	return gulp.src([
 		'app/libs/jquery/jquery.min.js',
 		'app/libs/plugins-scroll/plugins-scroll.js',
-
+		'app/libs/content-filter/js/main.js',
+		'app/libs/content-filter/js/jquery.mixitup.min.js',
 
 		'app/js/common.min.js', // Always in the end
 		])

@@ -1,3 +1,20 @@
 /* ---------------------------------------------------------
                             Footer
    ---------------------------------------------------------*/
+
+.footer {
+  padding: 20px 0;
+  background: #373737;
+
+  &__heading {
+    margin-bottom: 0;
+    color: #ed6866;
+    font-family: 'comfortaa-regular';
+    font-size: 1em;
+  }
+
+  &__copyright {
+    color: #bcbcbc;
+  }
+}
+

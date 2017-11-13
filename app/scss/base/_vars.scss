@@ -37,11 +37,11 @@ $base-link-color: $blue;
 
 // Buttons 
 $btn-color: $white !default;
-$btn-background: $blue !default;
-$btn-padding: 0.4em 0.7em !default;
-$btn-border-radius: 28px;
+$btn-background: $light-black !default;
+$btn-padding: 1em 1.43em 0.86em !default;
+$btn-border-radius: 0;
 $btn-font-size: inherit !default;
-$btn-font-family: 'RobotoRegular' !default;
+$btn-font-family: 'comfortaa-bold' !default;
 
 // Forms
 $form-element-padding: 8px 17px !default;
@@ -55,7 +55,7 @@ $h2-font-size: 3em !default;     // 42px
 $h3-font-size: 2.143em !default; // 30px
 $h4-font-size: 1.857em !default; // 26px
 $h5-font-size: 1.57em !default;  // 22px
-$h6-font-size: 17px !default;
+$h6-font-size: 1.43em !default;  // 20px
 
 
 $headings-font-family: 'russo' !default;
