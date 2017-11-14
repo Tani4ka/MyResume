@@ -16,8 +16,9 @@
     width: 300px;
     height: 300px;
     border: 15px solid rgba(255, 255, 255, 0.71);
-    background: #3b3c3c; /*url("img/IMG_1479.jpg")*/
-    background-size: cover;
+    background: #3b3c3c url("/img/photoTanya.jpg") no-repeat;
+    background-size: 120%;
+    background-position: 45% 35%;
     background-clip: content-box;
     border-radius: 50%;
 
@@ -198,16 +199,16 @@
 }
 
 
-
 /*resume*/
 
 .resume {
-  padding: 20px 0 50px;
+  padding-top: 20px;
 
   &_wrap {
     background: #f5f5f5;
   }
   &_wrap1 {
+    padding-bottom: 50px;
     background: #e6e6e6;
   }
 
@@ -270,7 +271,7 @@
   }
 
   &__text {
-    margin: 0 0 15px 50px;
+    margin-bottom: 15px;
   }
 }
 
@@ -418,28 +419,146 @@
     @include media(">=tablet") {
       flex-basis: 25%;
     }
-
-    //&::before {
-    //  content: '';
-    //  position: absolute;
-    //  top: 0;
-    //  left: 0;
-    //  bottom: 0;
-    //  right: 0;
-    //  background: rgba(231, 74, 61, 0.81);
-    //  opacity: 0;
-    //  @extend %transition;
-    //}
-    //&:hover::before,
-    //&:focus::before {
-    //  opacity: 1;
-    //}
-    //&:hover .li-over,
-    //&:focus .li-over {
-    //  opacity: 1;
-    //}
   }
 
+  &__link {
+    position: relative;
+    display: block;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      display: block;
+      background: rgba(0,0,0,0.4);
+      opacity: 0;
+      cursor: pointer;
+      @extend %transition;
+    }
+    &:hover::before,
+    &:focus::before {
+      opacity: 1;
+    }
+
+    &::after {
+      content: '\f002';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -30px;
+      margin-left: -30px;
+      text-align: center;
+      width: 60px;
+      height: 60px;
+      display: block;
+      opacity: 0;
+      color: $white;
+      line-height: 60px;
+      background: $accent;
+      font-size: 22px;
+      font-family: 'FontAwesome';
+      border-radius: 50%;
+      transform: scale(2);
+      @extend %transition;
+    }
+    &:hover::after,
+    &:focus::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+
+
+/* contacts */
+.contacts {
+  position: relative;
+  z-index: 2;
+
+  &_wrap {
+    position: relative;
+    padding: 20px 0;
+
+    &.overlay:before {
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.65);
+    }
+
+    .h2, .h4 {
+      color: $white;
+      position: relative;
+      z-index: 2;
+    }
+
+    .map {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: $light-gray;
+    }
+  }
+
+  &__heading {
+    margin-top: 50px;
+    color: $accent;
+  }
+
+  &__item{
+    position: relative;
+    margin: 38px auto;
+    padding-left: 70px;
+    width: 300px;
+    display: block;
+    line-height: 20px;
+    color: #bcbcbc;
+    font-size: 1.29em;
+    text-align: left;
+    font-style: normal;
+    text-decoration: none;
+
+    @include media("<tablet") {
+      padding-left: 55px;
+      font-size: 1.2em;
+    }
+
+    &:before {
+      content: '\f015';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border: 2px solid $accent;
+      border-radius: 50%;
+      line-height: 42px;
+      color: $accent;
+      font-size: 18px;
+      font-family: 'FontAwesome';
+      text-align: center;
+    }
+    &_phone:before{
+      content: '\f095';
+    }
+    &_email:before{
+      content: '\f0e0';
+      font-size: 16px;
+    }
+
+    &_phone,
+    &_email {
+      &:hover {
+        color: $accent;
+      }
+    }
+  }
 }
 
 

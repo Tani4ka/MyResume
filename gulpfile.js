@@ -12,34 +12,77 @@ var gulp           = require('gulp'),
 		autoprefixer   = require('gulp-autoprefixer'),
 		ftp            = require('vinyl-ftp'),
 		notify         = require("gulp-notify"),
-		htmlmin 	   = require('gulp-html-minifier'),
+		htmlmin 	     = require('gulp-html-minifier'),
 		rsync          = require('gulp-rsync'),
-		csso 		   = require('gulp-csso'),
+		csso 		       = require('gulp-csso'),
+    babel          = require('gulp-babel'),
+    autopolyfiller = require('gulp-autopolyfiller'),
+    merge          = require('event-stream').merge,
+    order          = require("gulp-order"),
 		sourcemaps     = require('gulp-sourcemaps');
 
 
 gulp.task('common-js', function() {
-	return gulp.src([
+	var all = gulp.src([
 		'app/js/common.js',
 		])
+
+    .pipe(babel({
+      presets: ['es2015']
+    }));
+
+    var polyfills = all.pipe(autopolyfiller('polyfills.js', {
+      browsers: [ 'Android 2.3',
+        'Android 4',
+        'Chrome 20',
+        'Firefox 24',
+        'ie 8',
+        'ie 9',
+        'iOS 6',
+        'Opera 12',
+        'Safari 6']
+    }));
+
+    return merge(polyfills, all)
+      .pipe(order([
+        'polyfills.js',
+        'all.js'
+      ]))
+
 	.pipe(concat('common.min.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('app/js'));
 });
 
-gulp.task('js', ['common-js'], function() {
-	return gulp.src([
-		'app/libs/jquery/jquery.min.js',
-		'app/libs/plugins-scroll/plugins-scroll.js',
-		'app/libs/content-filter/js/main.js',
-		'app/libs/content-filter/js/jquery.mixitup.min.js',
+//gulp.task('common-js', function() {
+//	return gulp.src([
+//		'app/js/common.js',
+//	])
+//	.pipe(concat('common.min.js'))
+//	.pipe(uglify())
+//	.pipe(gulp.dest('app/js'));
+//});
 
-		'app/js/common.min.js', // Always in the end
-		])
-	.pipe(concat('scripts.min.js'))
-	.pipe(uglify())
-	.pipe(gulp.dest('app/js'))
-	.pipe(browserSync.reload({stream: true}));
+gulp.task('map-js', function() {
+  return gulp.src(['app/js/map.js'])
+    .pipe(concat('map.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('app/js'));
+});
+
+gulp.task('js', ['common-js', 'map-js'], function() {
+  return gulp.src([
+    'app/libs/jquery/jquery.min.js',
+    'app/libs/plugins-scroll/plugins-scroll.js',
+    'app/libs/content-filter/js/main.js',
+    'app/libs/content-filter/js/jquery.mixitup.min.js',
+
+    'app/js/common.min.js', // Always in the end
+  ])
+  .pipe(concat('scripts.min.js'))
+  .pipe(uglify())
+  .pipe(gulp.dest('app/js'))
+  .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('browser-sync', function() {
@@ -57,11 +100,25 @@ gulp.task('sass', function() {
 	return gulp.src('app/scss/style.scss')
 	.pipe(sourcemaps.init())
 	.pipe(sass({'bundleExec': true}).on("error", notify.onError()))    //  // sass({outputStyle: 'expand'})
-	.pipe(csso({ restructure: false, sourceMap: true, debug: true }))
+	.pipe(csso({
+      restructure: false,
+      sourceMap: true,
+      debug: true
+    }))
 	.pipe(rename({suffix: '.min'}))
 	.pipe(sourcemaps.write())
-	.pipe(autoprefixer(['last 15 versions']))
-	// .pipe(cleanCSS()) // comment while develop
+	//.pipe(autoprefixer(['last 15 versions']))
+  .pipe(autoprefixer([
+    'Android 2.3',
+    'Android >= 4',
+    'Chrome >= 20',
+    'Firefox >= 24',
+    'Explorer >= 8',
+    'iOS >= 6',
+    'Opera >= 12',
+    'Safari >= 6'
+  ]))
+  .pipe(cleanCSS()) // comment while develop
 	.pipe(gulp.dest('app/css'))
 	.pipe(browserSync.reload({stream: true}));
 });
@@ -84,7 +141,7 @@ gulp.task('imagemin', function() {
 	.pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('build', ['removedist', 'imagemin', 'sass', 'js'], function() {
+gulp.task('build', ['removedist', 'imagemin', 'sass', 'js', 'minify'], function() {
 
 	var buildFiles = gulp.src([
 		//'app/*.html',
@@ -97,6 +154,7 @@ gulp.task('build', ['removedist', 'imagemin', 'sass', 'js'], function() {
 
 	var buildJs = gulp.src([
 		'app/js/scripts.min.js',
+    'app/js/map.min.js',
 		]).pipe(gulp.dest('dist/js'));
 
 	var buildFonts = gulp.src([
@@ -120,7 +178,7 @@ gulp.task('deploy', function() {
 	'dist/.htaccess',  // .htaccess - for cache
 	];
 	return gulp.src(globs, {buffer: false})
-	.pipe(conn.dest('/public_html/S-Mitler'));  // change name of progect
+	.pipe(conn.dest('/public_html/MyResume'));  // change name of progect
 
 });
 
