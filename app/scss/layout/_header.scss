@@ -130,6 +130,9 @@
 }
 
 /*drop menu*/
+#header-menu {
+  transition: all 0.3s ease-in;
+}
 
 .drop-menu{
   position: absolute;
@@ -142,7 +145,6 @@
 
   @include media("<tablet") {
     left: 15px;
-    //top: 0;
   }
   @media screen and (min-width: 1600px) {
     left: 20%;
@@ -153,6 +155,7 @@
     width: 62px;
     background: transparent;
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s linear;
   }
   &-btn{
     background: $accent;
@@ -164,6 +167,7 @@
     transition: background 0.7s ease;
     padding: 15px 16px;
     text-decoration: none;
+    transition: all 0.3s linear;
 
     &:hover {
       background: #3a3a3a;
@@ -226,7 +230,8 @@
         top: 0;
         left: 0;
         width: 16px;
-        height: 4px;
+        height: 5px;
+        border-radius: 2px;
         background: $white;
         transform: rotate(45deg);
       }
@@ -259,8 +264,9 @@
 
 .menu{
   margin: 0;
+  padding: 10px 0;
   border-radius: 0;
-  padding: 0;
+  background: rgb(47, 47, 47);
   font-family: 'TrebuchetMS';
 
   &__item {

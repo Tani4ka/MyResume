@@ -118,7 +118,7 @@ gulp.task('sass', function() {
     'Opera >= 12',
     'Safari >= 6'
   ]))
-  //.pipe(cleanCSS()) // comment while develop
+  .pipe(cleanCSS()) // comment while develop
 	.pipe(gulp.dest('app/css'))
 	.pipe(browserSync.reload({stream: true}));
 });
@@ -168,7 +168,7 @@ gulp.task('deploy', function() {
 	var conn = ftp.create({
 		host:      'webdevgranchenko.esy.es',
 		user:      'u715394280',
-		password:  'dAf0yfAAsm8e',
+		password:  'c8cZyXY40BUA',
 		parallel:  10,
 		log: gutil.log
 	});
@@ -178,7 +178,7 @@ gulp.task('deploy', function() {
 	'dist/.htaccess',
 	];
 	return gulp.src(globs, {buffer: false})
-	.pipe(conn.dest('/public_html/MyResume'));  // change name of progect
+	.pipe(conn.dest('/public_html/MyResumey'));  // change name of progect
 });
 
 gulp.task('rsync', function() {

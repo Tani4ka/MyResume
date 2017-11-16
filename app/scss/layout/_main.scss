@@ -8,6 +8,10 @@
   padding: 210px 0 50px;
   background: #e6e6e6;
 
+  @include media("<tablet") {
+    padding: 210px 0 20px;
+  }
+
   &-photo {
     position: absolute;
     top: -125px;
@@ -26,6 +30,10 @@
   &__subheading {
     color: $accent;
     font-weight: bold;
+
+    @include media("<tablet") {
+      line-height: 1.2em;
+    }
   }
 
   &-info {
@@ -37,7 +45,6 @@
     }
   }
 }
-
 
 .info {
   @include media("<tablet") {
@@ -55,10 +62,13 @@
     line-height: 82px;
     color: $accent;
 
+    @include media("<tablet") {
+      margin: 0 auto 20px;
+    }
+
     &:before {
       font-family: 'FontAwesome';
     }
-
     &:after{
       content: '';
       position: absolute;
@@ -71,8 +81,6 @@
       opacity: 1;
       transform: scale(1);
     }
-
-
   }
 
   &:hover .info__icon,
@@ -86,15 +94,13 @@
       opacity: 0;
     }
   }
-
   &__strong {
     color: darken($light-gray, 15%);
   }
 }
 
 
-/*my skills*/
-
+/* my skills section */
 .skills {
   position: relative;
 
@@ -115,7 +121,6 @@
 }
 
 .percent {
-
   &_wrap {
     display: flex;
     flex-wrap: wrap;
@@ -188,25 +193,21 @@
   from {  stroke-dashoffset: 537; stroke: $accent; }
   to {  stroke-dashoffset: 200; stroke: $accent; }
 }
-
 @keyframes show25 {
   from {  stroke-dashoffset: 537; stroke: $accent;  }
   to {  stroke-dashoffset: 430; stroke: $accent;  }
 }
-
 @keyframes show50 {
   from {  stroke-dashoffset: 537; stroke: $accent;  }
   to {  stroke-dashoffset: 330; stroke: $accent;  }
 }
-
 @keyframes show70 {
   from {  stroke-dashoffset: 537; stroke: $accent;  }
   to {  stroke-dashoffset: 250; stroke: $accent;  }
 }
 
 
-/*resume*/
-
+/* resume section */
 .resume {
   padding-top: 20px;
 
@@ -308,7 +309,6 @@
 
 
 /* portfolio section */
-
 .portfolio {
 
   &_wrap {
@@ -354,6 +354,7 @@
 .cd-tab-filter {
   height: auto;
   text-align: center;
+  z-index: 5;
 
   li {
     position: relative;
@@ -372,7 +373,7 @@
     padding-bottom: 0;
 
     @include media("<tablet") {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      border-bottom: 1px solid rgba(162, 162, 162, 0.15);
     }
 
     &.selected{
@@ -385,6 +386,10 @@
     &:active,
     &.selected {
       color: $black;
+
+      @include media("<tablet") {
+        border-bottom: 1px solid #dddddd;
+      }
     }
   }
 }
@@ -424,6 +429,7 @@
   &__link {
     position: relative;
     display: block;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
 
     &::before {
       content: '';
@@ -473,12 +479,8 @@
 }
 
 
-
-/* contacts */
+/* contacts section */
 .contacts {
-  position: relative;
-  z-index: 2;
-
   &_wrap {
     position: relative;
     padding: 20px 0;
@@ -487,11 +489,8 @@
       z-index: 1;
       background: rgba(0, 0, 0, 0.65);
     }
-
     .h2, .h4 {
       color: $white;
-      position: relative;
-      z-index: 2;
     }
 
     .map {
@@ -522,6 +521,7 @@
     text-align: left;
     font-style: normal;
     text-decoration: none;
+    @extend %transition;
 
     @include media("<tablet") {
       padding-left: 55px;
@@ -564,50 +564,6 @@
 
 
 
-
-
-
-
-// @extend %flex;           // flex-wrap:wrap; justify-content:space-between; align-items:center; display:flex;
-// @extend %clearfix;       // &:after { content:''; display:block; clear:both; }
-// @extend %transition;     // (all 0.5s ease)
-// @extend %listreset;      // (margin:0; padding:0; list-style: none;)
-// @extend %ellipsis;       // Match text...
-
-
-// @include animate(color)          // (transform opacity, .6s) // (visibility opacity); (0.3s ease-in-out)
-// @include size(16px)              // (15px, 4px);
-// @include v-align(100%);          // vertical align el inside parent with fixed height/min-height
-// @include placeholder;            // input { @include placeholder {color: red;} }
-// @include hide-text;              // overflow:hidden; text-indent:101%; white-space:nowrap;
-// @include center_transform();     // left:50%; top:50%; transform:translate(-50%, -50%); position:absolute;
-// @include verrical_center_transform();    // left:0; top:50%; width: 100%; transform:translate(0, -50%); position:absolute;
-// @include font(14px, 18px, #000);         // font-size, line-height, color
-// @include triangle(20px, red, up);
-// @include animate(color width, 1s, linear);
-// @include gradient(left, right, rgba(0,0,0,1), rgba(255,255,255,1));
-
-// font: italic 15px/1.75em 'Times New Roman';
-
-
-
-//@include media("<480px") {}
-
-//@include media(">=480px") {}
-
-//@include media("<tablet") {}
-
-//@include media(">=tablet") {}
-
-//@include media("<992px") {}
-
-//@include media(">=992px") {}
-
-//@include media("<1200px") {}
-
-//@include media(">=1200px") {}
-
-//@include media("<1200px", ">991px") {}
 
 
 

@@ -115,23 +115,21 @@ jQuery(function() {
     $('#button').click(function() {
         if (open == true) {
             open = false
-            $mybtn.css({'transform': 'translate(0px)', 'transition': 'all 0.5s linear'});
-            $overflow.css({
-                'width': '62px',
-                'background': '#ED6866',
-                'transition': 'all 0.5s linear'
-            });
-            $effect.css({'height': '0px', 'transition': 'all 0.5s ease-in'});
+            $mybtn.css({'transform': 'translate(0px)', 'background': '#ED6866'});
+            $overflow.css({'width': '62px'});
+            $effect.css({'height': '0px'});
         } else {
             open = true
-            $mybtn.css({'transform': 'translate(-50px)', 'transition': 'all 0.5s linear'});
-            $overflow.css({
-                'width': '185px',
-                'background': '#ED6866',
-                'transition': 'all 0.5s linear'
-            });
-            $effect.css({'height': '310px', 'transition': 'all 0.5s ease-in'});
+            $mybtn.css({'transform': 'translate(-50px)'});
+            $overflow.css({'width': '185px'});
+            $effect.css({'height': '310px'});
         }
+    });
+    $('#button').mouseover(function() {
+        $mybtn.css({'background': '#3a3a3a'});
+    });
+    $('#button').mouseout(function() {
+        $mybtn.css({'background': '#ED6866'});
     });
 
 
@@ -171,153 +169,7 @@ jQuery(function() {
         $this.html(words.join(' '));
     });
 
-    /* Equalheight without plug plugin */
-
-    //(function ($) {
-    //    $.fn.equalHeights = function () {
-    //        var $items = $(this);
-    //        function equalize() {
-    //            $items.height('initial');
-    //            var maxH = $items.eq(0).height();
-    //            $items.each(function () {
-    //                maxH = ($(this).height() > maxH) ? $(this).height() : maxH;
-    //            });
-    //            $items.height(maxH);
-    //        }
-    //        equalize();
-    //        $(window).bind('resize', function () {
-    //            equalize();
-    //        });
-    //    };
-    //})(jQuery);
-    //
-    //$('.info .h5').equalHeights();// call equalHeights
-
 });// other scripts end
-
-
-
-    /* E-mail Ajax Send example */
-
-    ////Documentation & Example: https://github.com/agragregra/uniMail
-    //$(".callback").submit(function() { //Change
-    //    var th = $(this);
-    //    $.ajax({
-    //        //type: "POST",
-    //        //url: "mail.php", //Change
-    //        //data: th.serialize()     // need hostname with imail
-    //
-    //    }).done(function() {
-    //        $('.success').addClass('visible');
-    //        setTimeout(function() {
-    //            th.trigger("reset");
-    //            $('.success').removeClass('visible');
-    //            $.magnificPopup.close();
-    //        }, 3000);
-    //    });
-    //    //}).done(function() {
-    //    //    $(th).find('.success').addClass('active').css('display', 'flex').hide().fadeIn(); // alert("Thank you!");
-    //    //    setTimeout(function() {
-    //    //        $(th).find('.success').removeClass('active').fadeOut();// Done Functions
-    //    //        th.trigger("reset");
-    //    //    }, 3000);
-    //    //});
-    //    return false;
-    //});
-
-    /* Equalheight without plug plugin */
-
-    //(function ($) {
-    //    $.fn.equalHeights = function () {
-    //        var $items = $(this);
-    //        function equalize() {
-    //            $items.height('initial');
-    //            var maxH = $items.eq(0).height();
-    //            $items.each(function () {
-    //                maxH = ($(this).height() > maxH) ? $(this).height() : maxH;
-    //            });
-    //            $items.height(maxH);
-    //        }
-    //        equalize();
-    //        $(window).bind('resize', function () {
-    //            equalize();
-    //        });
-    //    };
-    //})(jQuery);
-    //
-    //// call equalHeights
-    //$('.services__header').equalHeights();
-    //$('.services__text').equalHeights();
-
-
-    /* Blocks the same height */
-
-    //function carouselService() {
-    //    var mh = 23;
-    //    $('.services').each(function () {
-    //        var ths = $(this),
-    //            thsh = ths.find('.services__header').outerHeight();
-    //        //console.log(thsh);
-    //        if(thsh > mh) {
-    //            mh = thsh;
-    //        };
-    //    });
-    //
-    //    $('.services__header').height(mh);
-    //    //console.log($('.services__header').outerHeight());
-    //}carouselService();
-
-
-    /* Add last/first span for cms */
-
-    //$('.carousel-services__composition .carousel-services__header').each(function () {
-    //    var ths = $(this);
-    //    ths.html(ths.html().replace(/(\S+)\s*$/, '<span>$1</span>')); // выделяет последнее слово в span
-    //});
-
-    //$('section .h2').each(function () {
-    //    var ths = $(this);
-    //    ths.html(ths.html().replace(/^(\S+)/, '<span>$1</span>'));  // выделяет первое слово в span
-    //});
-
-    //$('.start .heading__header').each(function () {
-    //    var ths = $(this);
-    //    ths.html(ths.html().replace(/(\w+\'\w+\s+\w+\!)$/, '<span>$1</span>')); // выделяет 2последних словa в span
-    //});
-
-    /* Selectize */
-    //$('select').selectize();
-
-
-    /* Resize Window (in the end) */
-
-    //function onResize() {
-    //    $('.carousel-services__content').equalHeights();  // for owl-carousel,
-    //}onResize();
-    //window.onresize = function () {
-    //    onResize()
-    //};
-
-
-    /* Magnific-popup */
-
-    //$('.popup-with-move-anim').magnificPopup({
-    //    type: 'inline',
-    //    fixedContentPos: false,
-    //    fixedBgPos: true,
-    //    overflowY: 'auto',
-    //    closeBtnInside: true,
-    //    preloader: false,
-    //    midClick: true,
-    //    removalDelay: 300,
-    //    mainClass: 'my-mfp-slide-bottom'
-    //});
-
-    /* What form did the application come from (for magnific-popup) */
-
-    //$('a[href="#callback"]').click(function() {      // возьмет из кнопки зачение data-form и вставит в input[type=hidden] value с этим значением, чтобы знать с какой фрмы пришла заявка
-    //    $('#callback .formname').val($(this).data('form'));
-    //});
 
 
                     /*//////// PLUGINS ////////*/

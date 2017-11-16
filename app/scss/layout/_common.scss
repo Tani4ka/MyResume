@@ -2,7 +2,6 @@
                             Сommon
    ---------------------------------------------------------*/
 // preloader
-
 #hellopreloader_preload{
   display: block;
   position: fixed;
@@ -18,7 +17,6 @@
 }
 
 // button to top
-
 .top {
   position: fixed;
   bottom: 25px;
@@ -67,6 +65,7 @@ header, section, footer {
     bottom: 0;
     right: 0;
     background: rgba($black, .4);
+    z-index: 1;
   }
 }
 
@@ -74,3 +73,7 @@ header, section, footer {
   overflow: hidden;
 }
 
+.wrap_over {
+  position: relative;
+  z-index: 1;
+}
