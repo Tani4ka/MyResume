@@ -118,7 +118,7 @@ gulp.task('sass', function() {
     'Opera >= 12',
     'Safari >= 6'
   ]))
-  .pipe(cleanCSS()) // comment while develop
+  //.pipe(cleanCSS()) // comment while develop
 	.pipe(gulp.dest('app/css'))
 	.pipe(browserSync.reload({stream: true}));
 });
@@ -175,11 +175,10 @@ gulp.task('deploy', function() {
 
 	var globs = [
 	'dist/**',
-	'dist/.htaccess',  // .htaccess - for cache
+	'dist/.htaccess',
 	];
 	return gulp.src(globs, {buffer: false})
 	.pipe(conn.dest('/public_html/MyResume'));  // change name of progect
-
 });
 
 gulp.task('rsync', function() {

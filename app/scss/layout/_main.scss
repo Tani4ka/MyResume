@@ -71,6 +71,8 @@
       opacity: 1;
       transform: scale(1);
     }
+
+
   }
 
   &:hover .info__icon,
@@ -83,6 +85,10 @@
       transition: 0.8s;
       opacity: 0;
     }
+  }
+
+  &__strong {
+    color: darken($light-gray, 15%);
   }
 }
 
@@ -290,12 +296,6 @@
   padding-left: 15px;
   overflow: hidden;
   text-align: left;
-
-  &_first {
-    @include media("<tablet") {
-      margin: 0
-    }
-  }
 
   &__heading {
     margin: 10px 0;
