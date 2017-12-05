@@ -38,11 +38,11 @@
     transition: all .5s ease;
   }
 
-  &:focus,
-  &:hover,
+  //&:hover,
+  &.selected,
   &:active,
-  &.selected {
-    color: $black;
+  &:focus {
+    color: $black ;
 
     &:before {
       visibility: visible;
@@ -51,8 +51,34 @@
     }
   }
   &.selected{
-    color: $white;
+    color: $white ;
     background: $light-black;
     box-shadow: none;
   }
 }
+
+.no-touch .btn {
+  &:hover {
+    color: $black !important;
+
+    &:before {
+      visibility: visible;
+      width: 200%;
+      left: -50%;
+    }
+  }
+}
+
+//.touch .btn {
+//   &:focus,
+//   &:active,
+//   &.selected {
+//     color: $black;
+//
+//     &:before {
+//       visibility: visible;
+//       width: 200%;
+//       left: -50%;
+//     }
+//   }
+// }

@@ -9,15 +9,14 @@
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-.bg-holder img {
-  position: absolute;
-  width: auto;
+.bg-holder__img {
+  //position: absolute;
+  width: 100%;
   height: auto;
 }
 .is-touch-device {
   background-size: cover;
 }
-
 
 .header {
   position: relative;
@@ -140,7 +139,7 @@
   left: 10%;
   padding: 0;
   font-size: 1.43em;
-  z-index: 5;
+  z-index: 10;
   color: $white;
 
   @include media("<tablet") {

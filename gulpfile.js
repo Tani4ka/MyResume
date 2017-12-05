@@ -178,7 +178,7 @@ gulp.task('deploy', function() {
 	'dist/.htaccess',
 	];
 	return gulp.src(globs, {buffer: false})
-	.pipe(conn.dest('/public_html/MyResumey'));  // change name of progect
+	.pipe(conn.dest('/public_html/MyReesume'));  // change name of progect
 });
 
 gulp.task('rsync', function() {

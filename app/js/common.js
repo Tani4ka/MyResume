@@ -87,24 +87,6 @@ jQuery(function() {
     });
 
 
-    /* fixed menu */
-    var $menu = $(".drop-menu");
-    $(window).scroll(function(){
-        if ($(this).scrollTop() > 50 && $menu.hasClass("default")){
-            $menu.fadeOut(0,function(){
-                $(this).removeClass("default")
-                  .addClass("fixed")
-                  .fadeIn(0);
-            });
-        } else if($(this).scrollTop() <= 50 && $menu.hasClass("fixed")) {
-            $menu.fadeOut(0,function(){
-                $(this).removeClass("fixed")
-                  .addClass("default")
-                  .fadeIn(0);
-            });
-        }
-    });
-
 
     /* buttom menu */
     var $mybtn = $('.drop-menu-btn');
@@ -130,6 +112,46 @@ jQuery(function() {
     });
     $('#button').mouseout(function() {
         $mybtn.css({'background': '#ED6866'});
+    });
+
+    /* fixed menu */
+    var $menu = $(".drop-menu");
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 50 && $menu.hasClass("default")){
+            $menu.fadeOut(0,function(){
+                $(this).removeClass("default")
+                  .addClass("fixed")
+                  .fadeIn(0);
+
+                if (open == true) {
+                    open = false
+                    $mybtn.css({'transform': 'translate(0px)', 'background': '#ED6866'});
+                    $overflow.css({'width': '62px'});
+                    $effect.css({'height': '0px'});
+                }
+            });
+        } else if($(this).scrollTop() <= 50 && $menu.hasClass("fixed")) {
+            $menu.fadeOut(0,function(){
+                $(this).removeClass("fixed")
+                  .addClass("default")
+                  .fadeIn(0);
+            });
+        }
+    });
+
+    /* close menu when click on links */
+    $('.menu__link').click(function() {
+        if (open == true) {
+            open = false
+            $mybtn.css({'transform': 'translate(0px)', 'background': '#ED6866'});
+            $overflow.css({'width': '62px'});
+            $effect.css({'height': '0px'});
+        } else {
+            open = true
+            $mybtn.css({'transform': 'translate(-50px)'});
+            $overflow.css({'width': '185px'});
+            $effect.css({'height': '310px'});
+        }
     });
 
 
@@ -169,7 +191,19 @@ jQuery(function() {
         $this.html(words.join(' '));
     });
 
+
+    /* No touch device :hover */
+    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+        console.log('this is a touch device');
+        document.body.classList.add('touch');
+    } else {
+        console.log('this is not a touch device');
+        document.body.classList.add('no-touch');
+    }
+
 });// other scripts end
+
+
 
 
                     /*//////// PLUGINS ////////*/
@@ -330,7 +364,6 @@ jQuery(function() {
 
     Util = (function() {
         function Util() {}
-
         Util.prototype.extend = function(custom, defaults) {
             var key, value;
             for (key in defaults) {
@@ -341,11 +374,9 @@ jQuery(function() {
             }
             return custom;
         };
-
         Util.prototype.isMobile = function(agent) {
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(agent);
         };
-
         Util.prototype.createEvent = function(event, bubble, cancel, detail) {
             var customEvent;
             if (bubble == null) {
@@ -368,7 +399,6 @@ jQuery(function() {
             }
             return customEvent;
         };
-
         Util.prototype.emitEvent = function(elem, event) {
             if (elem.dispatchEvent != null) {
                 return elem.dispatchEvent(event);
@@ -378,7 +408,6 @@ jQuery(function() {
                 return elem["on" + event]();
             }
         };
-
         Util.prototype.addEvent = function(elem, event, fn) {
             if (elem.addEventListener != null) {
                 return elem.addEventListener(event, fn, false);
@@ -388,7 +417,6 @@ jQuery(function() {
                 return elem[event] = fn;
             }
         };
-
         Util.prototype.removeEvent = function(elem, event, fn) {
             if (elem.removeEventListener != null) {
                 return elem.removeEventListener(event, fn, false);
@@ -398,7 +426,6 @@ jQuery(function() {
                 return delete elem[event];
             }
         };
-
         Util.prototype.innerHeight = function() {
             if ('innerHeight' in window) {
                 return window.innerHeight;
@@ -406,9 +433,7 @@ jQuery(function() {
                 return document.documentElement.clientHeight;
             }
         };
-
         return Util;
-
     })();
 
     WeakMap = this.WeakMap || this.MozWeakMap || (WeakMap = (function() {
@@ -416,7 +441,6 @@ jQuery(function() {
               this.keys = [];
               this.values = [];
           }
-
           WeakMap.prototype.get = function(key) {
               var i, item, j, len, ref;
               ref = this.keys;
@@ -441,9 +465,7 @@ jQuery(function() {
               this.keys.push(key);
               return this.values.push(value);
           };
-
           return WeakMap;
-
       })());
 
     MutationObserver = this.MutationObserver || this.WebkitMutationObserver || this.MozMutationObserver || (MutationObserver = (function() {
@@ -457,13 +479,10 @@ jQuery(function() {
           }
 
           MutationObserver.notSupported = true;
-
           MutationObserver.prototype.observe = function() {};
-
           return MutationObserver;
 
       })());
-
     getComputedStyle = this.getComputedStyle || function(el, pseudo) {
           this.getPropertyValue = function(prop) {
               var ref;
@@ -479,7 +498,6 @@ jQuery(function() {
           };
           return this;
       };
-
     getComputedStyleRX = /(\-([a-z]){1})/g;
 
     this.WOW = (function() {
@@ -492,7 +510,6 @@ jQuery(function() {
             callback: null,
             scrollContainer: null
         };
-
         function WOW(options) {
             if (options == null) {
                 options = {};
@@ -509,7 +526,6 @@ jQuery(function() {
             this.animationNameCache = new WeakMap();
             this.wowEvent = this.util().createEvent(this.config.boxClass);
         }
-
         WOW.prototype.init = function() {
             var ref;
             this.element = window.document.documentElement;
@@ -520,7 +536,6 @@ jQuery(function() {
             }
             return this.finished = [];
         };
-
         WOW.prototype.start = function() {
             var box, j, len, ref;
             this.stopped = false;
@@ -583,10 +598,9 @@ jQuery(function() {
                 })(this)).observe(document.body, {
                       childList: true,
                       subtree: true
-                  });
+                });
             }
         };
-
         WOW.prototype.stop = function() {
             this.stopped = true;
             this.util().removeEvent(this.config.scrollContainer || window, 'scroll', this.scrollHandler);
@@ -595,13 +609,11 @@ jQuery(function() {
                 return clearInterval(this.interval);
             }
         };
-
         WOW.prototype.sync = function(element) {
             if (MutationObserver.notSupported) {
                 return this.doSync(this.element);
             }
         };
-
         WOW.prototype.doSync = function(element) {
             var box, j, len, ref, results;
             if (element == null) {
@@ -630,7 +642,6 @@ jQuery(function() {
             }
             return results;
         };
-
         WOW.prototype.show = function(box) {
             this.applyStyle(box);
             box.className = box.className + " " + this.config.animateClass;
@@ -644,7 +655,6 @@ jQuery(function() {
             this.util().addEvent(box, 'MSAnimationEnd', this.resetAnimation);
             return box;
         };
-
         WOW.prototype.applyStyle = function(box, hidden) {
             var delay, duration, iteration;
             duration = box.getAttribute('data-wow-duration');
@@ -656,7 +666,6 @@ jQuery(function() {
                 };
             })(this));
         };
-
         WOW.prototype.animate = (function() {
             if ('requestAnimationFrame' in window) {
                 return function(callback) {
@@ -668,7 +677,6 @@ jQuery(function() {
                 };
             }
         })();
-
         WOW.prototype.resetStyle = function() {
             var box, j, len, ref, results;
             ref = this.boxes;
@@ -679,7 +687,6 @@ jQuery(function() {
             }
             return results;
         };
-
         WOW.prototype.resetAnimation = function(event) {
             var target;
             if (event.type.toLowerCase().indexOf('animationend') >= 0) {
@@ -687,7 +694,6 @@ jQuery(function() {
                 return target.className = target.className.replace(this.config.animateClass, '').trim();
             }
         };
-
         WOW.prototype.customStyle = function(box, hidden, duration, delay, iteration) {
             if (hidden) {
                 this.cacheAnimationName(box);
@@ -713,9 +719,7 @@ jQuery(function() {
             });
             return box;
         };
-
         WOW.prototype.vendors = ["moz", "webkit"];
-
         WOW.prototype.vendorSet = function(elem, properties) {
             var name, results, value, vendor;
             results = [];
@@ -735,7 +739,6 @@ jQuery(function() {
             }
             return results;
         };
-
         WOW.prototype.vendorCSS = function(elem, property) {
             var j, len, ref, result, style, vendor;
             style = getComputedStyle(elem);
@@ -747,7 +750,6 @@ jQuery(function() {
             }
             return result;
         };
-
         WOW.prototype.animationName = function(box) {
             var animationName, error;
             try {
@@ -761,19 +763,15 @@ jQuery(function() {
                 return animationName;
             }
         };
-
         WOW.prototype.cacheAnimationName = function(box) {
             return this.animationNameCache.set(box, this.animationName(box));
         };
-
         WOW.prototype.cachedAnimationName = function(box) {
             return this.animationNameCache.get(box);
         };
-
         WOW.prototype.scrollHandler = function() {
             return this.scrolled = true;
         };
-
         WOW.prototype.scrollCallback = function() {
             var box;
             if (this.scrolled) {
@@ -800,7 +798,6 @@ jQuery(function() {
                 }
             }
         };
-
         WOW.prototype.offsetTop = function(element) {
             var top;
             while (element.offsetTop === void 0) {
@@ -812,7 +809,6 @@ jQuery(function() {
             }
             return top;
         };
-
         WOW.prototype.isVisible = function(box) {
             var bottom, offset, top, viewBottom, viewTop;
             offset = box.getAttribute('data-wow-offset') || this.config.offset;
@@ -822,19 +818,14 @@ jQuery(function() {
             bottom = top + box.clientHeight;
             return top <= viewBottom && bottom >= viewTop;
         };
-
         WOW.prototype.util = function() {
             return this._util != null ? this._util : this._util = new Util();
         };
-
         WOW.prototype.disabled = function() {
             return !this.config.mobile && this.util().isMobile(navigator.userAgent);
         };
-
         return WOW;
-
     })();
-
 }).call(this);
 
 
