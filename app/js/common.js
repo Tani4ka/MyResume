@@ -199,7 +199,7 @@ jQuery(function() {
     } else {
         console.log('this is not a touch device');
         document.body.classList.add('no-touch');
-    }
+    };
 
 });// other scripts end
 

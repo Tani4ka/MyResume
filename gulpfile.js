@@ -19,6 +19,7 @@ var gulp           = require('gulp'),
     autopolyfiller = require('gulp-autopolyfiller'),
     merge          = require('event-stream').merge,
     order          = require("gulp-order"),
+    critical       = require('critical').stream,
 		sourcemaps     = require('gulp-sourcemaps');
 
 
@@ -123,6 +124,7 @@ gulp.task('sass', function() {
 	.pipe(browserSync.reload({stream: true}));
 });
 
+
 gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
 	gulp.watch('app/scss/**/*.scss', ['sass']);
 	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
@@ -141,10 +143,10 @@ gulp.task('imagemin', function() {
 	.pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('build', ['removedist', 'imagemin', 'sass', 'js', 'minify'], function() {
+gulp.task('build', ['removedist', 'imagemin', 'sass', 'js'], function() {
 
 	var buildFiles = gulp.src([
-		//'app/*.html',
+		'app/*.html',
 		'app/.htaccess',
 		]).pipe(gulp.dest('dist'));
 
@@ -155,6 +157,8 @@ gulp.task('build', ['removedist', 'imagemin', 'sass', 'js', 'minify'], function(
 	var buildJs = gulp.src([
 		'app/js/scripts.min.js',
     'app/js/map.min.js',
+		'app/js/html5shiv.min.js',
+		'app/js/html5shiv-printshiv.min.js',
 		]).pipe(gulp.dest('dist/js'));
 
 	var buildFonts = gulp.src([
@@ -163,8 +167,26 @@ gulp.task('build', ['removedist', 'imagemin', 'sass', 'js', 'minify'], function(
 
 });
 
-gulp.task('deploy', function() {
 
+// Generate & Inline Critical-path CSS
+gulp.task('critical', function () {
+	return gulp.src('dist/*.html')
+		.pipe(critical({
+			base: 'dist/',
+			minify: true,
+			width: 1023,
+			height: 900,
+			ignore: ['@font-face'],
+			inline: true,
+			css: ['dist/css/style.min.css']
+		}))
+		.on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+		.pipe(gulp.dest('dist/'));
+});
+
+
+// Deploy
+gulp.task('deploy', function() {
 	var conn = ftp.create({
 		host:      'webdevgranchenko.esy.es',
 		user:      'u715394280',
@@ -178,7 +200,7 @@ gulp.task('deploy', function() {
 	'dist/.htaccess',
 	];
 	return gulp.src(globs, {buffer: false})
-	.pipe(conn.dest('/public_html/MyReesume'));  // change name of progect
+	.pipe(conn.dest('/public_html/GResume'));  // change name of progect
 });
 
 gulp.task('rsync', function() {
