@@ -16,13 +16,13 @@
     position: absolute;
     top: -125px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) rotate(90deg);
     width: 300px;
     height: 300px;
     border: 15px solid rgba(255, 255, 255, 0.7);
-    background: #3a3b3b url("../img/tanya.png") no-repeat;
-    background-size: 110%;
-    background-position: 20% 0%;
+    background: #3a3b3b url("../img/photo.jpg") no-repeat;
+    background-size: 150%;
+    background-position: 30% -10%;
     background-clip: content-box;
     border-radius: 50%;
   }
@@ -199,11 +199,11 @@
 }
 @keyframes show50 {
   from {  stroke-dashoffset: 537; stroke: $accent;  }
-  to {  stroke-dashoffset: 330; stroke: $accent;  }
+  to {  stroke-dashoffset: 430; stroke: $accent;  }
 }
 @keyframes show70 {
   from {  stroke-dashoffset: 537; stroke: $accent;  }
-  to {  stroke-dashoffset: 250; stroke: $accent;  }
+  to {  stroke-dashoffset: 330; stroke: $accent;  }
 }
 
 

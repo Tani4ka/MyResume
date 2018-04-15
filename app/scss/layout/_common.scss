@@ -32,10 +32,12 @@
   color: #666;
   border-radius: 50%;
   opacity: .5;
+  box-shadow: 0 0 2px 1px #c5c5c5;
   @extend %transition;
   
   &:hover {
     background: $accent;
+    color: $white;
     opacity: 1;
   }
 
@@ -76,4 +78,8 @@ header, section, footer {
 .wrap_over {
   position: relative;
   z-index: 1;
+}
+
+.active {
+  color: red;
 }

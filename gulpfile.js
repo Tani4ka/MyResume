@@ -164,9 +164,7 @@ gulp.task('build', ['removedist', 'imagemin', 'sass', 'js'], function() {
 	var buildFonts = gulp.src([
 		'app/fonts/**/*',
 		]).pipe(gulp.dest('dist/fonts'));
-
 });
-
 
 // Generate & Inline Critical-path CSS
 gulp.task('critical', function () {
@@ -184,7 +182,6 @@ gulp.task('critical', function () {
 		.pipe(gulp.dest('dist/'));
 });
 
-
 // Deploy
 gulp.task('deploy', function() {
 	var conn = ftp.create({
@@ -200,7 +197,7 @@ gulp.task('deploy', function() {
 	'dist/.htaccess',
 	];
 	return gulp.src(globs, {buffer: false})
-	.pipe(conn.dest('/public_html/GResume'));  // change name of progect
+	.pipe(conn.dest('/public_html/Rresume'));  // change name of progect
 });
 
 gulp.task('rsync', function() {
